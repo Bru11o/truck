@@ -1,0 +1,646 @@
+{{#if crossGroupSepatator}}
+  <tr class="{{new_group_css}}" style="{{ hideRenderedRollupRows this }}">
+    <td class="b-nep-tbres-td-full" colspan="{{ searchGroupCaptionColspan currentSearchMode }}">
+      {{#if onlySeparator}}
+      {{else}}
+        <div class="b-nep-tbres-tr-showmore">
+          <a href="#" role="group-slider" data-price-item-is-hide={{hideBtn}} data-item-mask="{{oem_make_name}}" data-role-name="cross-separator" data-parent-group-guid="{{groupParentGuid}}" data-group-name="{{groupName}}">
+            {{#if hideBtn}}
+              {{ft 'v2_js_templates.price_item.hide_button'}}
+            {{else}}
+              {{ft 'v2_js_templates.price_item.show_more'}} {{goods_word_in_russian restCount}}
+            {{/if}}
+          </a>
+        </div>
+      {{/if}}
+    </td>
+  </tr>
+{{else}}
+  {{#if showMoreGroupItems }}
+    <tr>
+      <td class="b-nep-tbres-td-full more-group-items-btn-td" colspan="{{ searchGroupCaptionColspan currentSearchMode }}">
+        <a herf="#" class="more-group-items-btn" data-group-name="{{groupName}}" role="show-more-group-items-btn" >
+          {{ft 'v2_search_page.show_n_cross_btn_text'}}
+        </a>
+      </td>
+    </tr>
+  {{else}}
+    {{{renderRollupRow this}}}
+    <tr class="{{group_css}} {{new_group_css}} {{noPictureCssClass}}" id="{{guid_id}}" data-price-add-break-line="{{addBreakLine}}" data-parent-group-guid="{{group_parent_guid}}" style="{{ hideRenderedRollupRows this }}">
+      <td style="padding: 0"></td>
+      {{#if is_outdated_oem}}
+        {{#if group}}
+          {{#if cross_prices_group}}
+            {{!-- <td {{{crossGroupColumnColSpanHtml}}}></td> --}}
+          {{else}}
+            {{!-- <td></td> --}}
+          {{/if}}
+          {{#if_vs_bool 'v2_search_page_disable_grouping_detail_names' }}
+            <td class="b-nep-mstd-4">
+              <div class="b-nep-mstd-sdescript" title="{{ removeToxicWords detail_name }}" style="{{selected_css_cell}}">
+                {{#if detailNameAsLink}}
+                  <a href="/products/{{url_make_name}}/{{url_oem}}.html" target="_blank" class="b-nep-mstd-oem detail-name-as-link" style="{{selected_css_cell}}">{{ removeToxicWords detail_name }}</a>
+                {{else}}
+                  {{ removeToxicWords detail_name }}
+                {{/if}}
+              </div>
+            </td>
+          {{else}}
+            {{!-- <td></td> --}}
+          {{/if_vs_bool}}
+        {{else}}
+          {{#if isShowImageColumn2}}
+            <td class="{{imageColumnCssClass}}" {{{currentGroupRowSpanHtml}}} style="{{crossGroupCss}}" data-not-selectable >
+              {{#if isShowImageColumn }}
+                <div class="b-nep-mstd-pic">
+                  {{#with sys_info}}
+                    {{#if goods_img_url}}
+                      <a href="{{goods_img_url}}"  data-photos-url="/products/{{url_make_name}}/{{url_oem}}/photos.json"  role="goods-image-selector" style="background-image: url('{{goods_img_url}}')"></a>
+                    {{else}}
+                      <a href="/images/noimage-v2.jpg" role="goods-image-selector" style="background-image: url('/images/noimage-v2.jpg')"></a>
+                    {{/if}}
+                  {{/with}}
+                </div>
+              {{/if}}
+              {{#if isShowGoodsInfoIcon}}
+                <ul class="b-nep-mstd-list-info">
+                  {{#if_vs_bool 'v2_search_page_show_goods_info_icon' }}
+                    <li>
+                      {{#if hideCostFromUnregistredUsers }}
+                        <a href="/products/{{url_make_name}}/{{url_oem}}/info.html" target="_blank" class="b-nep-mstd-link-sett" role="goods-info-fancybox-link"></a>
+                      {{else}}
+                          <a href="/products/{{url_make_name}}/{{url_oem}}/info.html?price={{visible_cost}}" target="_blank" class="b-nep-mstd-link-sett" role="goods-info-fancybox-link"></a>
+                      {{/if}}
+                    </li>
+                  {{/if_vs_bool}}
+                  {{#if_vs_bool 'v2_search_page_search_photos_in_google' }}
+                    <li>
+                      <a href="https://www.google.ru/search?q={{oem}} {{make_name}}&tbm=isch" class="b-nep-mstd-link-g" target="_blank"></a>
+                    </li>
+                  {{/if_vs_bool}}
+                </ul>
+              {{/if}}
+            </td>
+          {{/if}}
+          {{#if openCrossGroupBlankRow}}
+            {{#if cross_prices_group}}
+              <td class="b-nep-mstd-3" data-make-name="{{make_name}}" {{{currentGroupRowSpanHtml}}}>
+            {{else}}
+              <td class="b-nep-mstd-3" data-make-name="{{make_name}}" {{{currentGroupRowSpanHtml}}}>
+            {{/if}}
+          {{else}}
+            <td class="b-nep-mstd-3" data-make-name="{{make_name}}" {{{currentGroupRowSpanHtml}}}>
+          {{/if}}
+          {{#if_vs_bool 'v2_search_page_panel_show_reviews' }}
+            {{#if_vs_bool 'v2_search_page_show_reviews' }}
+              {{#if sys_info.rate_average}}
+                <div class="cart-review__wrap review-cost">
+                  <div class="cart-review">
+                    <div class="cart-review__left">
+                      <div class="cart-review__rate">{{#with sys_info}}{{ rate_average }}{{/with}}</div>
+                      <div class="cart-review__star"></div>
+                    </div>
+                    <span class="cart-review__line"></span>
+                    <a href="/products/{{url_make_name}}/{{url_oem}}/info.html?price={{visible_cost}}&data_block=reviews" class="cart-review__right" target="_blank" role="goods-info-fancybox-link">
+                      <span>{{ sys_info.rate_count }} {{ getReviewLabel sys_info.rate_count }}</span>
+                    </a>
+                  </div>
+                </div>
+              {{/if}}
+            {{/if_vs_bool}}
+          {{/if_vs_bool}}
+            <div class="b-nep-mstd-nmcontainer">
+              <div class="b-nep-mstd-pname-wrapper">
+                {{#ifHideMakeNametFromGuest make_name}}
+                {{else}}              
+                  <a class="b-nep-mstd-pname c-minfo-link-v2" href="#c-minfo" data-href="/products/{{url_make_name}}/make_name_description" style="{{selected_css_cell}}">
+                    {{make_name}}
+                  </a>
+                  {{#if tecdoc_cross}}
+                    <img src="/images/cross-tecdoc-green.png" class='tecdoc-cross' title='{{ft 'v2_js_templates.price_item.is_good_cross' }}' style="cursor: pointer;">
+                  {{/if}}                    
+                {{/ifHideMakeNametFromGuest}}
+              </div>
+              {{renderBrandLabel make_name}}             
+              {{#if new_oem}}
+                <a href="/products/{{url_make_name}}/{{url_oem}}.html" target="_blank" class="b-nep-mstd-oem" style="{{selected_css_cell}}">{{new_oem}}</a>
+              {{else}}
+                <a href="/products/{{url_make_name}}/{{url_oem}}.html" target="_blank" class="b-nep-mstd-oem" style="{{selected_css_cell}}">{{oem}}</a>
+              {{/if}}               
+            </div>
+            <div class="b-nep-mstd-sdescript" title="{{ removeToxicWords detail_name }}" style="{{selected_css_cell}}">
+              {{#if detailNameAsLink }}
+                <a href="/products/{{url_make_name}}/{{url_oem}}.html" target="_blank" class="b-nep-mstd-oem detail-name-as-link" style="{{selected_css_cell}}">{{ removeToxicWords detail_name }}</a>
+              {{else}}
+                {{ removeToxicWords detail_name }}
+              {{/if}}
+            </div>
+            {{#with sys_info}}
+              {{#ifCond type_of_use_rrp '==' 4 }}
+                <div class="source-cost-as-rrp b-nep-mstd-sdescript">
+                  {{{../source_cost_as_rrp}}}
+                </div>
+              {{/ifCond}}
+            {{/with}}
+          </td>
+          <td class="b-nep-mstd-4">
+            <div class="b-nep-mstd-sdescript" title="{{ removeToxicWords detail_name }}" style="{{selected_css_cell}}">
+              {{#if detailNameAsLink }}
+                <a href="/products/{{url_make_name}}/{{url_oem}}.html" target="_blank" class="b-nep-mstd-oem detail-name-as-link" style="{{selected_css_cell}}">{{ removeToxicWords detail_name }}</a>
+              {{else}}
+                {{ removeToxicWords detail_name }}
+              {{/if}}
+            </div>
+            {{#with sys_info}}
+              {{#ifCond type_of_use_rrp '==' 4 }}
+                <div class="source-cost-as-rrp b-nep-mstd-sdescript">
+                  {{{../source_cost_as_rrp}}}
+                </div>
+              {{/ifCond}}
+            {{/with}}
+          </td>
+        {{/if}}
+        <td colspan="7" style="{{selected_css_cell}}">
+          <b>{{ft 'v2_js_templates.price_item.number_not_supplied'}}</b>
+        </td>
+      {{else}}
+        {{#if group}}
+          {{#if cross_prices_group}}
+            <td {{{crossGroupColumnColSpanHtml}}}></td>
+          {{else}}
+            {{!-- <td></td> --}}
+          {{/if}}
+          {{#if_vs_bool 'v2_search_page_disable_grouping_detail_names' }}
+            <td class="b-nep-mstd-4" style="{{selected_css}}">
+              <div class="b-nep-mstd-sdescript" title="{{ removeToxicWords detail_name }}" style="{{selected_css_cell}}">
+                {{#if detailNameAsLink }}
+                  <a href="/products/{{url_make_name}}/{{url_oem}}.html" target="_blank" class="b-nep-mstd-oem detail-name-as-link" style="{{selected_css_cell}}">{{ removeToxicWords detail_name }}</a>
+                {{else}}
+                  {{ removeToxicWords detail_name }}
+                {{/if}}
+              </div>
+              {{#with sys_info}}
+                {{#ifCond type_of_use_rrp '==' 4 }}
+                  <div class="source-cost-as-rrp b-nep-mstd-sdescript">
+                    {{{../source_cost_as_rrp}}}
+                  </div>
+                {{/ifCond}}
+              {{/with}}
+            </td>
+          {{else}}
+            {{!-- <td></td> --}}
+          {{/if_vs_bool}}
+        {{else}}
+          {{#if isShowImageColumn2}}
+            <td class="{{imageColumnCssClass}}" {{{currentGroupRowSpanHtml}}} style="{{crossGroupCss}} {{without_group_select}}" data-not-selectable>
+              {{#isRenderMakeNameAndOemBlock this}}
+                {{#if isShowImageColumn}}
+                  <div class="b-nep-mstd-pic">
+                    {{#if replace_base_image}}
+                      {{#with sys_info}}
+                        {{#if images}}
+                          {{#each images}}
+                            <a href="{{this.original}}" rel="{{../../guid_id}}" role="goods-image-selector" class=" {{limitClass @index 1 '' 'hidden'}}" style="background-image: url('{{this.thumbnails}}')"></a>
+                          {{/each}}
+                        {{/if}}
+                      {{/with}}
+                    {{else}}
+                      {{#with sys_info}}
+                        {{#unless is_bu}}
+                          {{#if goods_img_url}}
+                            <a href="{{goods_img_url}}" rel="{{../../guid_id}}"  data-photos-url="/products/{{../url_make_name}}/{{../url_oem}}/photos.json"  role="goods-image-selector" style="background-image: url('{{goods_img_url}}')"></a>
+                          {{else}}
+                            <a href="/images/noimage-v2.jpg" role="goods-image-selector" style="background-image: url('/images/noimage-v2.jpg')"></a>
+                          {{/if}}
+                        {{else}}
+                          <a href="/images/noimage-v2.jpg" role="goods-image-selector" style="background-image: url('/images/noimage-v2.jpg')"></a>
+                        {{/unless}}
+                      {{/with}}
+                    {{/if}}
+                  </div>
+                {{/if}}
+                {{#if isShowGoodsInfoIcon}}
+                  <ul class="b-nep-mstd-list-info">
+                    {{#if_vs_bool 'v2_search_page_show_goods_info_icon' }}
+                      <li>
+                        {{#if hideCostFromUnregistredUsers }}
+                          <a href="/products/{{url_make_name}}/{{url_oem}}/info.html" target="_blank" class="b-nep-mstd-link-sett" role="goods-info-fancybox-link"></a>
+                        {{else}}
+                            <a href="/products/{{url_make_name}}/{{url_oem}}/info.html?price={{visible_cost}}" target="_blank" class="b-nep-mstd-link-sett" role="goods-info-fancybox-link"></a>
+                        {{/if}}
+                      </li>
+                    {{/if_vs_bool}}
+                    {{#if_vs_bool 'v2_search_page_search_photos_in_google' }}
+                      <li>
+                        <a href="https://www.google.ru/search?q={{oem}} {{make_name}}&tbm=isch" class="b-nep-mstd-link-g" target="_blank"></a>
+                      </li>
+                    {{/if_vs_bool}}
+                    {{#if group}}
+                    {{else}}
+                      {{#if_customer_logged}}
+                        {{#if_vs_bool 'v2_search_page_enable_favorite_function' }}
+                          <li>
+                            <a href="#" class="b-nep-mstd-link-heart" role="auto-detail-note-show-popup-btn" data-oem="{{oem}}" data-make_name="{{ make_name }}" data-guid="{{ guid_id }}" data-detail_name="{{ removeToxicWords detail_name }}" data-img_path="{{ current_row_position_img_path }}"></a>
+                          </li>
+                        {{/if_vs_bool}}
+                      {{/if_customer_logged}}
+                    {{/if}}
+                  </ul>
+                {{/if}}
+              {{/isRenderMakeNameAndOemBlock}}
+            </td>
+          {{/if}}
+          {{#if openCrossGroupBlankRow}}
+            {{#if cross_prices_group}}
+              <td class="b-nep-mstd-3" style="{{without_group_select}}" data-make-name="{{make_name}}" {{{currentGroupRowSpanHtml}}}>
+            {{else}}
+              <td class="b-nep-mstd-3" style="{{without_group_select}}"  data-make-name="{{make_name}}" {{{currentGroupRowSpanHtml}}}>
+            {{/if}}
+          {{else}}
+            <td class="b-nep-mstd-3" style="{{without_group_select}}" data-make-name="{{make_name}}" {{{currentGroupRowSpanHtml}}}>
+          {{/if}}
+          {{#if_vs_bool 'v2_search_page_panel_show_reviews' }}
+            {{#if_vs_bool 'v2_search_page_show_reviews' }}
+              {{#if sys_info.rate_average}}
+                <div class="cart-review__wrap review-cost">
+                  <div class="cart-review">
+                    <div class="cart-review__left">
+                      <div class="cart-review__rate">{{#with sys_info}}{{ integerToFloat rate_average }}{{/with}}</div>
+                      <div class="cart-review__star"></div>
+                    </div>
+                    <span class="cart-review__line"></span>
+                    <a href="/products/{{url_make_name}}/{{url_oem}}/info.html?price={{visible_cost}}&data_block=reviews" class="cart-review__right" target="_blank" role="goods-info-fancybox-link">
+                      <span>{{ sys_info.rate_count }} {{ getReviewLabel sys_info.rate_count }}</span>
+                    </a>
+                  </div>
+                </div>
+              {{/if}}
+            {{/if_vs_bool}}
+          {{/if_vs_bool}}
+            {{#isRenderMakeNameAndOemBlock this}}
+              <div class="b-nep-mstd-nmcontainer">
+                <div class="b-nep-mstd-pname-wrapper">
+                  {{#ifHideMakeNametFromGuest make_name}}
+                  {{else}}
+                    <a class="b-nep-mstd-pname c-minfo-link-v2" href="#c-minfo" data-href="/products/{{url_make_name}}/make_name_description" style="{{selected_css_cell}}">
+                      {{make_name}}
+                    </a>
+                    {{#if tecdoc_cross}}
+                      <img src="/images/cross-tecdoc-green.png" class='tecdoc-cross' title='{{ft 'v2_js_templates.price_item.is_good_cross' }}' style="cursor: pointer;">
+                    {{/if}}
+                  {{/ifHideMakeNametFromGuest}}
+                </div>
+                {{{renderBrandLabel make_name}}}
+                {{#if new_oem}}
+                  <a href="/products/{{url_make_name}}/{{url_oem}}.html" target="_blank" class="b-nep-mstd-oem" style="{{selected_css_cell}}">{{new_oem}}</a>
+                {{else}}
+                  <a href="/products/{{url_make_name}}/{{url_oem}}.html" target="_blank" class="b-nep-mstd-oem" style="{{selected_css_cell}}">{{oem}}</a>
+                {{/if}}
+              </div>
+              <div class="b-nep-mstd-sdescript {{detailNameCss}}" {{{detailNameStyle}}} title="{{ removeToxicWords detail_name }}" style="{{selected_css_cell}}">
+                {{#if detailNameAsLink }}
+                  <a href="/products/{{url_make_name}}/{{url_oem}}.html" target="_blank" class="b-nep-mstd-oem detail-name-as-link" style="{{selected_css_cell}}">{{ removeToxicWords detail_name }}</a>
+                {{else}}
+                  {{ removeToxicWords detail_name }}
+                {{/if}}
+              </div>
+              {{#with sys_info}}
+                {{#ifCond type_of_use_rrp '==' 4 }}
+                  <div class="source-cost-as-rrp b-nep-mstd-sdescript">
+                    {{{../source_cost_as_rrp}}}
+                  </div>
+                {{/ifCond}}
+              {{/with}}
+            {{/isRenderMakeNameAndOemBlock}}
+          </td>
+          {{#if_vs_bool 'v2_search_page_disable_grouping_detail_names' }}
+            <td class="b-nep-mstd-4" style="{{selected_css}}">
+          {{else}}
+            <td class="b-nep-mstd-4" {{{currentGroupRowSpanHtml}}}>
+          {{/if_vs_bool}}
+            {{#isRenderMakeNameAndOemBlock this}}
+              <div class="b-nep-mstd-sdescript {{detailNameCss}}" {{{detailNameStyle}}} title="{{ removeToxicWords detail_name }}" style="{{selected_css_cell}}">
+                {{#if detailNameAsLink }}
+                  <a href="/products/{{url_make_name}}/{{url_oem}}.html" target="_blank" class="b-nep-mstd-oem detail-name-as-link" style="{{selected_css_cell}}">{{ removeToxicWords detail_name }}</a>
+                {{else}}
+                  {{ removeToxicWords detail_name }}
+                {{/if}}
+              </div>
+              {{#if without_rows_group}}
+                {{#with sys_info}}
+                  {{#if is_bu}}
+                    <div class="b-info-border-bu">
+                      <div class="b-item-meta-line"></div>
+                      <div class="b-label">
+                        {{#if wearout }}
+                          {{ft 'views.used_parts.parts.bu_label_price_item'}} - {{wearoutDescription wearout}}
+                        {{else}}
+                          {{ft 'views.used_parts.parts.bu_label_price_item'}}
+                        {{/if}}
+                      </div>
+                    </div>
+                  {{/if}}
+                {{/with}}
+              {{/if}}
+              {{#with sys_info}}
+                {{#ifCond type_of_use_rrp '==' 4 }}
+                  <div class="source-cost-as-rrp b-nep-mstd-sdescript">
+                    {{{../source_cost_as_rrp}}}
+                  </div>
+                {{/ifCond}}
+              {{/with}}
+            {{/isRenderMakeNameAndOemBlock}}
+          </td>
+        {{/if}}
+        <td class="b-nep-mstd-5" style="{{selected_css}}">
+          <ul class="b-nep-mstd-list-info">
+            {{#if_vs_bool 'v2_search_page_show_goods_info_icon' }}
+              <li>
+                {{#if hideCostFromUnregistredUsers }}
+                  <a href="/products/{{url_make_name}}/{{url_oem}}/info.html" target="_blank" class="b-nep-mstd-link-sett" role="goods-info-fancybox-link"></a>
+                {{else}}
+                    <a href="/products/{{url_make_name}}/{{url_oem}}/info.html?price={{visible_cost}}" target="_blank" class="b-nep-mstd-link-sett" role="goods-info-fancybox-link"></a>
+                {{/if}}
+              </li>
+            {{/if_vs_bool}}
+            {{#if_vs_bool 'v2_search_page_search_photos_in_google' }}
+              <li>
+                <a href="https://www.google.ru/search?q={{oem}} {{make_name}}&tbm=isch" class="b-nep-mstd-link-g" target="_blank"></a>
+              </li>
+            {{/if_vs_bool}}
+            {{#if group}}
+            {{else}}
+              {{#if_customer_logged}}
+                {{#if_vs_bool 'v2_search_page_enable_favorite_function' }}
+                  <li>
+                    <a href="#" class="b-nep-mstd-link-heart" role="auto-detail-note-show-popup-btn" data-oem="{{oem}}" data-make_name="{{ make_name }}" data-guid="{{ guid_id }}" data-detail_name="{{ removeToxicWords detail_name }}" data-img_path="{{ current_row_position_img_path }}"></a>
+                  </li>
+                {{/if_vs_bool}}
+              {{/if_customer_logged}}
+            {{/if}}
+            <!--<li><a class="b-nep-mstd-link-note" href=""></a></li>-->
+          </ul>
+        </td>
+        {{#ifCustomerAbleToViewStockInformation }}
+          <td class="b-nep-mstd-6" style="{{selected_css}}">
+            <div class="b-nep-mstd-mob-th">{{vs_value 'v2_search_page_stock_column_title'}}</div>
+            {{#if selected_stock_cell}}
+              <div class="b-nep-mstd-store stock-selection-column" style="{{selected_stock_cell}}">
+            {{else}}
+              <div class="b-nep-mstd-store" style="{{selected_css_cell}}">
+            {{/if}}
+              {{#if_vs_bool 'v2_search_page_show_stock_comment_without_name'}}
+              {{else}}
+                {{#if_vs_bool 'v2_search_page_hide_stock_name'}}
+                {{else}}
+                  <a href="#" data-href="/prices/{{price_id}}/description" class="price-name" role="price-description-form" style="{{selected_css_cell}}">
+                    {{#with sys_info}} {{visible_sup_logo}} {{/with}}
+                  </a>
+                {{/if_vs_bool}}
+                {{#with sys_info}}
+                  {{#if central_warehouse}}
+                    <span class="label label-success text-vertical-align-top" style="font-size: 11px;" title="{{ft 'v2_js_templates.price_item.central_warehouse_title'}}">{{ft 'v2_js_templates.price_item.central_warehouse'}}</span>
+                  {{/if}}
+                  {{#if distribyutor}}
+                    <span class="label label-success text-vertical-align-top" style="font-size: 11px;" title="{{ft 'v2_js_templates.price_item.distributor_title'}}">{{ft 'v2_js_templates.price_item.distributor'}}</span>
+                  {{/if}}
+                  {{#if route_type}}
+                    <img src="/images/{{route_type}}.svg" width="16" title="{{route_type_comment}}">
+                  {{/if}}
+                {{/with}}
+              {{/if_vs_bool}}
+              {{#with sys_info}}
+                {{#if hidden_sup_logo}}
+                  <br>
+                  <small>
+                    {{hidden_sup_logo}}
+                  </small>
+                {{/if}}
+                {{#if search_comment}}
+                  <br>
+                  <small>
+                    {{search_comment}}
+                  </small>
+                {{/if}}
+                {{#if supplier_internal_id}}
+                  <br>
+                  <small>
+                    {{supplier_internal_id}}
+                  </small>
+                {{/if}}
+                {{#unless is_bu}}
+                  {{#if detail_comment}}
+                    <br>
+                    <small>
+                      {{detail_comment}}
+                    </small>
+                  {{/if}}
+                {{/unless}}
+                {{#unless ../without_rows_group}}
+                  {{#if is_bu}}
+                    <div class="b-info-border-bu">
+                      {{#if is_bu}}
+                        <div class="b-item-meta-line"></div>
+                        {{#if wearout }}
+                          <div class="b-label" title="{{ft 'views.used_parts.parts.alert'}} - {{wearoutDescription wearout}}">{{ft 'views.used_parts.parts.is_bu_alert'}}</div>
+                        {{else}}
+                          <div class="b-label" title="{{ft 'views.used_parts.parts.alert'}}">{{ft 'views.used_parts.parts.is_bu_alert'}}</div>
+                        {{/if}}
+                      {{/if}}
+                      {{#if_vs_bool 'v2_search_page_show_photos_from_price_in_search'}}
+                        {{#if eaimsid}}
+                          {{#each images}}
+                            <a href="{{this.original}}" target="_blank" data-ea-fancybox="{{../eaimsid}}" data-ea-product-id="{{../ws_product_id}}" class="{{limitClass @index 2 '' 'hidden'}}">
+                              <img src="{{this.thumbnails}}"  width="16" height="16">
+                            </a>
+                          {{/each}}
+                        {{else}}
+                          {{#if images}}
+                            {{#each images}}
+                              <a href="{{this.original}}" rel="{{../../guid_id}}" class="fancybox {{limitClass @index 2 '' 'hidden'}}" role="goods-image-selector">
+                                <img src="{{this.thumbnails}}" alt="" width="16" height="16">
+                              </a>
+                            {{/each}}
+                          {{/if}}
+                        {{/if}}
+                      {{/if_vs_bool}}
+                    </div>
+                  {{else}}
+                    {{#if_vs_bool 'v2_search_page_show_photos_from_price_in_search'}}
+                        {{#if images}}
+                          {{#each images}}
+                            <a href="{{this.original}}" rel="{{../../guid_id}}" class="fancybox {{limitClass @index 2 '' 'hidden'}}">
+                              <img src="{{this.thumbnails}}" alt="" width="16" height="16">
+                            </a>
+                          {{/each}}
+                        {{/if}}
+                      {{/if_vs_bool}}
+                  {{/if}}
+                {{/unless}}
+              {{/with}}
+            </div>
+          </td>
+        {{else}}
+          <td class="b-nep-mstd-6" style="{{selected_css}}"></td>
+        {{/ifCustomerAbleToViewStockInformation}}
+        {{#if_vs_bool 'v2_search_page_show_stat_column'}}
+        <td class="b-nep-mstd-7" data-price-id = "{{price_id}}" style="{{selected_css}}">
+        {{else}}
+        <td class="b-nep-mstd-7" style="{{selected_css}}">
+        {{/if_vs_bool}}
+          {{#if_vs_bool 'v2_search_page_show_stat_column'}}
+            <div class="b-nep-mstd-mob-th">{{vs_value 'v2_search_page_stat_column_title'}}</div>
+          {{/if_vs_bool}}
+          <ul class="b-nep-mstd-list-stat">
+            {{#if renderSupplierInfoIcon}}
+              <li>
+                <a href="#" role="supplier-info-popup-link" data-placement="left" data-supplier-info="{{ as_json supplier_info }}">
+                  <img src="{{vs_value 'v2_search_page_supplier_info_icon'}}" width="15">
+                </a>
+              </li>
+            {{/if}}
+            {{#with sys_info}}
+                {{#if return_witheld}}
+                  <li>
+                    <img src="{{vs_value 'v2_search_page_price_partial_unreturn_icon'}}" width="12" title="{{return_witheld_comment}}">
+                  </li>
+                {{/if}}
+                {{#if return_without_problem}}
+                  <li>
+                    <img src="{{vs_value 'v2_search_page_price_return_without_problem_icon'}}" width="12" title="{{return_without_problem_comment}}">
+                  </li>
+                {{/if}}
+                {{#if ws_un_return }}
+                  <li>
+                    <img src="{{vs_value 'v2_search_page_price_unreturn_icon'}}" width="12" title="{{#if ws_un_return_comment}} {{ws_un_return_comment}} {{ else }} {{ft 'v2_js_templates.price_item.unreturn'}} {{/if}}">
+                  </li>
+                {{/if}}
+            {{/with}}
+            {{#if_vs_bool 'v2_search_page_show_stat_column'}}
+              <li>
+                {{#with sys_info}}
+                  <div class="b-nep-tstat stat-icon stat-{{stat_group_type}}" data-stat="{{stat_group}}" data-placement="bottom">
+                  </div>
+                {{/with}}
+              </li>
+            {{/if_vs_bool}}
+          </ul>
+        </td>
+        {{#if_vs_bool 'v2_search_page_show_weight_column'}}
+          <td class="b-nep-mstd-weight" style="{{selected_css}}">
+            <div class="b-nep-mstd-mob-th">{{ft 'v2_search_page.weight_column_title'}}</div>
+            <div class="b-nep-mstd-width" style="{{selected_css_cell}}">
+              {{#if weight}}
+                {{{formatWeight weight}}}
+              {{else}}
+                -
+              {{/if}}
+            </div>
+          </td>
+        {{else}}
+          <td class="b-nep-mstd-weight" style="{{selected_css}}"></td>
+        {{/if_vs_bool}}
+        {{#if_vs_bool 'v2_search_page_show_qnt_column'}}
+          <td class="b-nep-mstd-8" style="{{selected_css}}">
+            <div class="b-nep-mstd-mob-th">{{vs_value 'v2_search_page_qnt_column_title'}}</div>
+            <div class="b-nep-mstd-amount" style="{{selected_css_cell}}">
+              {{{visible_qnt}}}
+              {{#if show_min_qnt}}
+                <span class="min-qnt" title="{{ft 'v2_js_templates.price_item.min_qnt'}}" style="{{selected_css_cell}}">({{min_qnt}})</span>
+              {{/if}}
+            </div>
+          </td>
+        {{else}}
+          <td class="b-nep-mstd-8" style="{{selected_css}}"></td>
+        {{/if_vs_bool}}
+        {{#if_vs_bool 'v2_search_page_show_delivery_column'}}
+          <td class="b-nep-mstd-9" style="{{selected_css}}">
+            <div class="b-nep-mstd-mob-th">{{vs_value 'v2_search_page_delivery_column_title'}}</div>
+            <div class="b-nep-mstd-delivery" style="{{selected_css_cell}}">{{delivery_day_v2 this}}</div>
+          </td>
+        {{else}}
+          <td class="b-nep-mstd-9" style="{{selected_css}}"></td>
+        {{/if_vs_bool}}
+        {{#if_vs_bool 'v2_search_page_show_btn_of_popup_to_check_price'}}
+          <td class="b-nep-mstd-10" style="{{selected_css}}"></td>
+        {{else}}
+          <td class="b-nep-mstd-10" style="{{selected_css}}">
+            <div class="b-nep-mstd-mob-th">{{vs_value 'v2_search_page_cost_column_title'}}</div>
+            <div class="b-nep-mstd-price">
+              {{#if hideCostFromUnregistredUsers }}
+              {{else}}
+                {{#unless is_price_by_request}}
+                  {{#if old_visible_cost}}
+                    <span class="old-price-content" style="{{selected_css_cell}}">
+                      {{money old_visible_cost}} <i>{{ft 'number.currency.format.unit'}}</i>
+                    </span>
+                  {{/if}}
+                {{/unless}}
+                <span class="sale-price-content" style="{{selected_css_cell}}">
+                  {{#if is_price_by_request}}
+                    {{ft 'v2_search_page.price_by_request'}}
+                  {{else}}
+                    {{money visible_cost}} <i>{{ft 'number.currency.format.unit'}}</i>
+                  {{/if}}
+                </span>
+                {{#with sys_info}}
+                  {{#ifCond type_of_use_rrp '!=' 4 }}
+                    {{#if rrp_value }}
+                      {{#ifCond type_of_use_rrp '==' 3 }}
+                        <span class="old-price-content" title="{{../rrp_price_name}}" >
+                          {{money rrp_value}} <i>{{ft 'number.currency.format.unit'}}</i>
+                        </span>
+                      {{else}}
+                        <span class="sale-price-content" title="{{../rrp_price_name}}" style="display: block;">
+                          {{money rrp_value}} <i>{{ft 'number.currency.format.unit'}}</i>
+                        </span>
+                      {{/ifCond}}
+                    {{/if}}
+                  {{/ifCond}}
+                {{/with}}
+                {{#if enable_markup_rating}}
+                  </br>
+                  <small title="{{ft 'v2_js_templates.price_item.markup_rating.markup_rate_title'}}" class="text-primary">
+                    {{ markup_rate }}
+                  </small>
+                  {{#if show_profit_markup }}
+                    <span role="profit-markup-content">
+                      /
+                      <small title="{{ft 'v2_js_templates.price_item.markup_rating.profit_markup_title'}}" class="text-success">
+                        {{ money profit_markup }}
+                      </small>
+                    </span>
+                  {{/if}}
+                {{/if}}
+              {{/if}}
+            </div>
+          </td>
+        {{/if_vs_bool}}
+        {{#if (js_window 'currentDiscountType.showPaymentDeferment') }}
+          <td>
+            {{#with sys_info}}
+              {{ payment_deferment }}
+            {{/with}}
+          </td>
+        {{/if}}
+        {{#if_vs_bool 'v2_search_page_show_btn_of_popup_to_check_price'}}
+          <td style="{{selected_css}}">
+            <a href="#cPopDetail" class="c-pop-link"
+               data-pic="{{#with sys_info}} {{goods_img_url}} {{/with}}" data-delivery-info="{{delivery_day_v2 this}}"
+               data-make-name="{{make_name}}" data-oem="{{oem}}" data-detail-name="{{detail_name}}" data-back-url="{{back_url}}" role="price-check-popup-btn">
+              {{vs_value 'v2_search_page_btn_of_popup_to_check_price_name'}}
+            </a>
+          </td>
+        {{else}}
+          {{#if hideCostFromUnregistredUsers }}
+            <td style="{{selected_css}}"></td>
+          {{else}}
+            <td class="b-nep-mstd-11" style="{{selected_css}}">
+              {{> catalogs/v2/_basket}}
+            </td>
+          {{/if}}
+        {{/if_vs_bool}}
+      {{/if}}
+    </tr>
+  {{/if}}
+{{/if}}

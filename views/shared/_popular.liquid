@@ -1,0 +1,57 @@
+{% cache 'popular', 1 %}
+
+    {% assign popular_products = 7 | sale_products %}
+    {% if popular_products != blank %}
+        <div class="tpl27-special mb-80">
+            <h2 class="second-title">{{'system-template-27.popular.title' | ft}}</h2>
+            <div class="tpl27-special__wrapper">
+                <div class="tpl27-special__slider">
+                    {% for product in popular_products %}
+                    {% assign clear_oem = product.oem %}
+                    {% assign clear_make_name = product.make_name %}
+                    {% assign current_article_url = nil | get_catalog_item_url: make_name: clear_make_name, oem: clear_oem %}
+                        <div>
+                          <div class="tpl27-card">
+                            <a href="{{product.product_photo}}" class="tpl27-card__img fancybox" target="_blank">
+                                <img src="{{product.product_photo}}" alt="{{product.detail_name}}" loading="lazy" />
+                            </a>
+                            <a href="{{product.product_url}}" class="tpl27-card__detail">{{product.detail_name}}</a> 
+                            <div class="tpl27-card__brand">{{product.make_name}}</div> 
+                            <div class="tpl27-card__oem">
+                                Артикул: {{product.oem}}
+                            </div>
+                            {% assign current_price_item = product.price %}
+                            <div class="tpl27-card-footer">
+                                <div class="tpl27-card-footer__left">
+                                    {% if product.before_sale_price > 0 %}
+                                        <div class="tpl27-card-footer__price_before">
+                                            {{product.before_sale_price | round: 2 | number_to_currency: unit: "", separator: ".", delimiter: "" }} {{'number.currency.format.unit' | ft}}
+                                        </div> 
+                                    {% endif %}
+                                    {% if product.price > 0 %}
+                                        <div class="tpl27-card-footer__price">
+                                             {{product.price | round: 2 | number_to_currency: unit: "", separator: ".", delimiter: "" }} {{'number.currency.format.unit' | ft}}
+                                        </div> 
+                                    {% endif %}
+                                </div>
+                                {% if product.available_text != blank %}
+                                    <div class="tpl27-card-footer__num">
+                                        <span>Количество:</span>
+                                        <span>{{ product.available_text }}</span>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <a class="tpl27-btn tpl27-btn__cart" href="{{product.product_url}}">
+                                <img src="{{'card-basket.svg' | asset_url }}" alt="basket" loading="lazy" />
+                                <span>{{'system-template-27.popular.in_cart' | ft}}</span>
+                            </a>
+                          </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+      
+    
+{% endcache %}

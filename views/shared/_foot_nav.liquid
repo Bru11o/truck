@@ -1,0 +1,24 @@
+{% assign footerMenuItems = 'footerMenu' | menu_by_code %}
+<div class="tpl27-footer-menu">
+  {% for menuItem in footerMenuItems %}
+    
+      {% if menuItem.childrens %}
+        <div class="tpl27-footer-menu-item">
+          <div class="tpl27-footer-menu-title" style="{{menuItem.css_style}}">{{menuItem.name}}</div>
+          <ul>
+            {% for subMenuItem in menuItem.childrens %}
+            <li>
+              <a href="{{subMenuItem.url}}" target="{{subMenuItem.target_type}}" {{subMenuItem.html_attribute}}
+                 style="{{subMenuItem.css_style}}">{{subMenuItem.name}}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% else %}
+        <div class="tpl27-footer-menu-item">
+          <a href="{{menuItem.url}}" target="{{menuItem.target_type}}" {{menuItem.html_attribute}} style="{{menuItem.css_style}}">{{menuItem.name}}</a>
+        </div>
+      {% endif %}
+    
+  {% endfor %}
+</div>

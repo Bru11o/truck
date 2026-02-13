@@ -1,0 +1,53 @@
+{% cache 'novelty', 1 %}
+
+    {% assign popular_price_items = 7 | sale_price_items %}
+    {% if popular_price_items != blank %}
+        <div class="tpl27-special mb-80">
+            <h2 class="second-title">{{'system-template-27.popular.novelty' | ft}}</h2>
+            <div class="tpl27-special__wrapper">
+                <div class="tpl27-special__slider">
+                    {% for price_items in popular_price_items %}
+                    
+                        <div>
+                            <div class="tpl27-card">
+                                <a href="{{price_items.first_image_url}}" class="tpl27-card__img fancybox" target="_blank">
+                                    <img src="{{price_items.first_image_url}}" alt="{{price_items.detail_name}}" loading="lazy" />
+                                </a>
+                                <a href="{{price_items.product_url}}" class="tpl27-card__detail">{{price_items.detail_name}}</a> 
+                                <div class="tpl27-card__brand">{{price_items.make_name}}</div> 
+                                <div class="tpl27-card__oem">
+                                    Артикул: {{price_items.oem}}
+                                </div>
+                                {% assign current_price_item = price_items.cost %}
+                                <div class="tpl27-card-footer">
+                                    <div class="tpl27-card-footer__left">
+                                        {% if price_items.before_sale_price > 0 %}
+                                            <div class="tpl27-card-footer__price_before">
+                                                {{price_items.before_sale_price | round: 2 }} {{'number.currency.format.unit' | ft}}
+                                            </div> 
+                                        {% endif %}
+                                        {% if price_items.cost > 0 %}
+                                            <div class="tpl27-card-footer__price">
+                                                 {{price_items.cost | round: 2 }} {{'number.currency.format.unit' | ft}}
+                                            </div> 
+                                        {% endif %}
+                                        <div class="tpl27-card-footer__num">
+                                            <span>Количество:</span>
+                                            <span>✔</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="tpl27-btn tpl27-btn__cart" href="{{price_items.product_url}}">
+                                    <img src="{{'card-basket.svg' | asset_url }}" alt="basket" loading="lazy" />
+                                    <span>{{'system-template-27.popular.in_cart' | ft}}</span>
+                                </a>
+                            </div>
+                        </div>
+                    
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    
+{% endcache %}

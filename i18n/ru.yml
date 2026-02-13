@@ -1,0 +1,88 @@
+system-template-27:
+    layouts:
+        copyright: Все права защищены
+        developer_label: Разработка
+        developer_link: parts-soft.ru
+    mslider:
+        btn: Перейти в каталог
+    news:
+        title: Новости
+    basket:
+        title: Корзина
+    search_panel:
+        placeholder: Поиск по каталогу
+        btn: Найти
+    user_nav:
+        catalog: Каталог
+        profile: Профиль
+        login: Вход
+        exit: Выход
+        cart: Корзина
+        registration: Создать аккаунт
+        contacts: Контакты
+        reg: Регистрация
+        lk: Личный кабинет
+        balance: Баланс
+        orders: Мои заказы
+        bills: Счета
+        waybills: Накладные
+        vin_request: VIN запросы
+        history_orders: История заказов
+        my_autos: Мои автомобили
+        messages: Сообщения
+        exit: Выход
+    popular:
+        title: Хиты продаж
+        oem: Номер
+        make_name: Бренд
+        category: Популярные категории
+        in_cart: В корзину
+        novelty: Новинки
+    default:
+        workday: Пн-Пт
+        workweekend: Сб, Вс
+        cat: Каталог товаров
+        title_search: Поиск автозапчастей по марке
+        original: Оригинальные каталоги
+        to: Каталог ТО
+        psdoc: Каталог PS DOC
+    callback_form:
+        label: Возникли трудности в подборе автозапчастей?
+        btn: Получить помощь
+    user_menu:
+        ballance: Баланс
+        bills: Счета
+        invoices: Накладные
+        vin_queries: VIN запросы
+        my_autos: Мои автомобили
+        my_order: История заказов
+        messages: Сообщения
+    order:
+        title: Мои заказы
+    brands:
+        title: Выберите марку
+    products:
+        qnt: Количество
+        dilevery: Доставим
+    search_vin: 
+        find: Найти
+        vin: Введите VIN
+        frame: Введите FRAME
+        title: Поиск запчастей по VIN/Frame номеру вашего автомобиля
+        subtitle: Frame номер вводите через тире
+    about:
+        title: О нас
+        subtitle: Магазин автозапчастей для и номарок
+        desc: Мы компания, занимающаяся розничной продажей запчастей, расходных материалов, аксессуаров и комплектующих для автомобилей иностранного производства. В нашем ассортименте продукция ведущих европейских, корейских, японских марок, а так же ольшой выбор неоригинальных автомобильных запчастей. Предлагаем быстрый и удобный сервис по поиску, подбору и заказу необходимых вам запчастей, сезонную систему скидок и максимально короткие сроки доставки.
+        num_clients: 24 231+
+        clients: Довольных клиентов за 10 лет работы
+        num_orders: 100+
+        orders: Заказов мы обрабатываем каждый день
+    form:
+        agree: Согласен(на) на обработку
+        link_text: моих данных
+        btn: Отправить запрос
+        phone: Телефон
+        name: Ваше имя
+        call_me: Перезвоните мне
+        form: Заполните форму и наш специалист свяжется с Вами.

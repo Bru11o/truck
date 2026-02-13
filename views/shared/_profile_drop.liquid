@@ -1,0 +1,40 @@
+<div class="tpl27-user-drop__row">
+    <img src="{{ 'lk.svg' | asset_url }}" alt="pic" />
+    <a href="/customers/{{current_customer.id}}/dashboard" class="tpl27-user-drop__link">{{'system-template-27.user_nav.lk' | ft}}</a>
+</div>
+<div class="tpl27-user-drop__row">
+    <img src="{{ 'balance.svg' | asset_url }}" alt="pic" />
+    <a href="/customers/{{current_customer.id}}/balances.html" class="tpl27-user-drop__link">{{'system-template-27.user_nav.balance' | ft}}</a>
+</div>
+<div class="tpl27-user-drop__row">
+    <img src="{{ 'orders.svg' | asset_url }}" alt="pic" />
+    <a href="/customers/{{current_customer.id}}/order_items.html" class="tpl27-user-drop__link">{{'system-template-27.user_nav.orders' | ft}}</a>
+</div>
+<div class="tpl27-user-drop__row">
+    <img src="{{ 'bills.svg' | asset_url }}" alt="pic" />
+    <a href="/customers/{{current_customer.id}}/bills" class="tpl27-user-drop__link">{{'system-template-27.user_nav.bills' | ft}}</a>
+</div>
+<div class="tpl27-user-drop__row">
+    <img src="{{ 'waybills.svg' | asset_url }}" alt="pic" />
+    <a href="/customers/{{current_customer.id}}/invoices" class="tpl27-user-drop__link">{{'system-template-27.user_nav.waybills' | ft}}</a>
+</div>
+<div class="tpl27-user-drop__row">
+    <img src="{{ 'vin-request.svg' | asset_url }}" alt="pic" />
+    <a href="/customers/{{current_customer.id}}/dashboard/vin-queries" class="tpl27-user-drop__link">{{'system-template-27.user_nav.vin_request' | ft}}</a>
+</div>
+<div class="tpl27-user-drop__row">
+    <img src="{{ 'history-request.svg' | asset_url }}" alt="pic" />
+    <a href="/customers/{{current_customer.id}}/order_items.html" class="tpl27-user-drop__link">{{'system-template-27.user_nav.history_orders' | ft}}</a>
+</div>
+<div class="tpl27-user-drop__row">
+    <img src="{{ 'my-autos.svg' | asset_url }}" alt="pic" />
+    <a href="/customers/{{current_customer.id}}/dashboard#/garage" class="tpl27-user-drop__link">{{'system-template-27.user_nav.my_autos' | ft}}</a>
+</div>
+<div class="tpl27-user-drop__row">
+    <img src="{{ 'messages.svg' | asset_url }}" alt="pic" />
+    <a href="/customers/{{current_customer.id}}/dialogs" class="tpl27-user-drop__link">{{'system-template-27.user_nav.messages' | ft}}</a>
+</div>
+<div class="tpl27-user-drop__row">
+    <img src="{{ 'exit.svg' | asset_url }}" alt="pic" />
+    <a href="/logout" class="tpl26-user-drop__link tpl27-user-drop__link_exit">{{'system-template-27.user_nav.exit' | ft}}</a>
+</div>

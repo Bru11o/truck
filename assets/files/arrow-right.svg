@@ -1,0 +1,14 @@
+<svg width="12.000000" height="24.000000" viewBox="0 0 12 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip435_6760">
+			<rect id="weui:arrow-outlined" rx="-0.500000" width="11.000000" height="23.000000" transform="translate(0.500000 0.500000)" fill="white" fill-opacity="0"/>
+		</clipPath>
+	</defs>
+	<rect id="weui:arrow-outlined" rx="-0.500000" width="11.000000" height="23.000000" transform="translate(0.500000 0.500000)" fill="#FFFFFF" fill-opacity="0"/>
+	<g clip-path="url(#clip435_6760)">
+		<path id="Vector" d="M3 8.31L3.89 7.5L8.75 11.95C8.83 12.02 8.89 12.11 8.93 12.2C8.97 12.29 9 12.39 9 12.49C9 12.6 8.97 12.7 8.93 12.79C8.89 12.88 8.83 12.97 8.75 13.04L3.89 17.5L3 16.68L7.56 12.5L3 8.31Z" fill="#2B53BE" fill-opacity="1.000000" fill-rule="nonzero"/>
+	</g>
+</svg>

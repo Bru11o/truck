@@ -1,0 +1,30 @@
+<div class="tpl27-banner">
+    <div class="tpl27-container">
+
+        {% cache 'main_page_banner', 1 %}
+              
+            {% assign banners = 'tpl27-slider' | banner_by_code %}
+            <div class="tpl27-banner__slider">
+                {% for banner in banners %}
+                    <div>
+                        <div class="tpl27-banner__item" data-large-url="{{banner.image_url}}" data-middle-url="{{banner.image_middle_url}}" data-mobile-url="{{banner.image_mini_url}}" style="background-image: url('{{banner.image_url}}')">
+                            <div class="tpl27-banner__content">
+                                <div class="tpl27-banner__title">{{banner.name}}</div>
+                                <div class="tpl27-banner__desc">{{banner.description}}</div>
+                                <a href="{{banner.url}}" class="tpl27-banner__btn">
+                                    {% if banner.options_1 == blank %}
+                                      {{'system-template-27.mslider.btn' | ft}}
+                                    {% else %}
+                                      {{banner.options_1}}
+                                    {% endif %}  
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+                
+        {% endcache %}
+    
+    </div>
+</div>

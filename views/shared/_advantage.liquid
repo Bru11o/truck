@@ -1,0 +1,11 @@
+{% assign menuItems = 'advantagetwentyseven' | menu_by_code %}
+
+<div class="tpl27-advantage">
+    {% for menuItem in menuItems %}
+        <div class="tpl27-advantage__item">
+            <img src="{{menuItem.icon}}" alt="icon" />
+            <div class="tpl27-advantage__title">{{menuItem.name}}</div>
+            <div class="tpl27-advantage__desc">{{menuItem.description}}</div>
+        </div>
+    {% endfor %}
+</div>

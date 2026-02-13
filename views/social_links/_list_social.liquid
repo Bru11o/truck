@@ -1,0 +1,29 @@
+<ul class="b-base-soc-list">
+    {% unless {{social_links.vk_url}} == blank %}
+      <li><a href="{{social_links.vk_url}}" target="_blank"><img class="ps-sub-lazy" data-src="{{'vk.svg' | asset_url}}" alt=""></a></li>
+    {% endunless %}
+    {% unless {{social_links.fb_url}} == blank %}
+      <li><a href="{{social_links.fb_url}}" target="_blank"><img class="ps-sub-lazy" data-src="{{'facebook.svg' | asset_url}}" alt=""></a></li>
+    {% endunless %}
+    {% unless {{social_links.ok_url}} == blank %}
+      <li><a href="{{social_links.ok_url}}" target="_blank"><img class="ps-sub-lazy" data-src="odnoklassniki.svg" alt=""></a></li>
+    {% endunless %}
+    {% unless {{social_links.instagram_url}} == blank %}
+      <li><a href="{{social_links.instagram_url}}" target="_blank"><img class="ps-sub-lazy" data-src="{{'instagram.svg' | asset_url}}" alt=""></a></li>
+    {% endunless %}
+    {% unless {{social_links.tw_url}} == blank %}
+      <li><a href="{{social_links.tw_url}}" target="_blank"><img class="ps-sub-lazy" data-src="twitter.svg" alt=""></a></li>
+    {% endunless %}
+    {% unless {{social_links.youtube_url}} == blank %}
+      <li><a href="{{social_links.youtube_url}}" target="_blank"><img class="ps-sub-lazy" data-src="{{'youtube.svg' | asset_url}}" alt=""></a></li>
+    {% endunless %}
+    {% unless {{social_links.telegram_url}} == blank %}
+      <li><a href="{{social_links.telegram_url}}" target="_blank"><img class="ps-sub-lazy" data-src="{{'tg.svg' | asset_url}}" alt=""></a></li>
+    {% endunless %}
+    {% unless {{social_links.viber_url}} == blank %}
+      <li><a href="{{social_links.viber_url}}" target="_blank"><img class="ps-sub-lazy" data-src="{{'viber.svg' | asset_url}}" alt=""></a></li>
+    {% endunless %}
+    {% unless {{social_links.whatsup_url}} == blank %}
+      <li><a href="{{social_links.whatsup_url}}" target="_blank"><img class="ps-sub-lazy" data-src="{{'wa.svg' | asset_url}}" alt=""></a></li>
+    {% endunless %}
+  </ul>

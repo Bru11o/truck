@@ -1,0 +1,68 @@
+/* Разделительная полоса и смещение текста заголовка блока */
+.b-nep-tbres .b-nep-tbres-tr-head {
+    background-color: #f2f4f8 !important;
+    border-top: 0px solid #ffffff !important;
+    padding: 7px 7px 7px 60px !important;
+}
+
+/* Иконка кнопки КОРЗИНЫ */
+.b-nep-add2bask:before {
+    vertical-align: top !important;
+    width: 25px !important;
+    height: 25px !important;
+    position: relative !important;
+    top: 0px !important;
+}
+
+/* Кнопка КОРЗИНЫ */
+.b-nep-add2bask {
+    margin-right: 20px !important;
+    height: 25px !important;
+    border-radius: 4px !important;
+    width: 95px !important;
+    font-size: 12px !important;
+    line-height: 25px !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+    display: inline-block !important;
+    font-weight: 500 !important;
+}
+
+/* Текст ЦЕНЫ по высоте */
+.b-nep-tbres .b-nep-mstd-price {
+    line-height: 21px !important;
+}
+
+/* Текст СРОК по высоте */
+.b-nep-tbres .b-nep-mstd-delivery {
+    line-height: 21px !important;
+}
+
+/* Текст КОЛ-ВО по высоте */
+.b-nep-mstd-amount {
+    line-height: 21px !important;
+}
+
+/* Столбец доставки */
+.b-nep-mstd-9 {
+  min-width: 130px !important; /* Фиксированная ширина */
+  width: 130px !important;
+}
+
+/* Текст в одну строку */
+.b-nep-mstd-delivery {
+  white-space: nowrap !important;
+  display: block; /* Если текст всё ещё переносится */
+}
+
+.main {
+    .b-nep-mstd-store {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+    }
+    
+    .b-nep-mstd-store small {
+        white-space: nowrap;
+    }
+}

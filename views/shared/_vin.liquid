@@ -1,0 +1,20 @@
+<div class="tpl27-container">
+    <div class="tpl27-info__form tpl27-info__form_vin">
+        <div class="tpl27-info__desc">
+            <div class="tpl27-info__title">{{'system-template-27.search_vin.title' | ft}}</div>
+            <div class="tpl27-info__subtitle">{{'system-template-27.search_vin.subtitle' | ft}}</div>
+        </div>
+        <form action="/laximo/vehicle_by_vin_frame" accept-charset="UTF-8" method="get">
+            <input type="hidden" name="vin" id="vin" />
+            <div class="tpl27-info__row tpl27-info__row_vin">
+                <div class="tpl27-info-vin__input">
+                    <input type="search" id="target-vin" placeholder="{{'system-template-27.search_vin.vin' | ft}}" />
+                </div>
+                <div class="tpl27-info-vin__input">
+                    <input type="search" id="target-frame" placeholder="{{'system-template-27.search_vin.frame' | ft}}" />
+                </div>
+                <input class="tpl27-info-vin__btn" type="submit" value="{{'system-template-27.search_vin.find' | ft}}" />
+            </div>
+        </form>
+    </div>
+</div>

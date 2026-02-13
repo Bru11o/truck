@@ -1,0 +1,5 @@
+{{#if login_form}}
+  <a href="/login" class="b-nep-add2bask" title="{{debug_id}}">{{ft 'v2_search_page.basket_btn_text'}}</a>
+{{else}}
+  <a href="#" class="b-nep-add2bask price-item-bay-v2" data-toggle="modal" data-item="{{as_json this}}" rel="#basket-form-dialog-v2" title="{{debug_id}}">{{ft 'v2_search_page.basket_btn_text'}}</a>
+{{/if}}

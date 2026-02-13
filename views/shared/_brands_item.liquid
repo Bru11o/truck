@@ -1,0 +1,23 @@
+<div class="tpl27-brands__wrap tab-pane {%if active%}active{% endif %}" id="{{tab_id}}">
+        {% for brand in brands %}
+            {% if brand.name.first != letter %}
+                {% assign letter = brand.name.first %}
+                <div class="tpl27-brands__block">
+                    <span>{{letter}}</span>
+                    <div class="tpl27-brands__inner">
+                        <a href="{{brand.path}}" class="tpl27-brands__item">
+                            <div class="tpl27-brands__title">{{brand.name}}</div>
+                        </a>
+                    </div>
+                </div>
+            {% else %}
+                <div class="tpl27-brands__block_down">
+                    <div class="tpl27-brands__inner">
+                        <a href="{{brand.path}}" class="tpl27-brands__item">
+                            <div class="tpl27-brands__title">{{brand.name}}</div>
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>

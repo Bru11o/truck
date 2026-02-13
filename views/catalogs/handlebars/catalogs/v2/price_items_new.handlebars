@@ -1,0 +1,161 @@
+<table class="{{sortClass}} {{imageGroupType}} {{imageTableClass}}" role="price-data-content-result-table">
+  <tr class="b-nep-tr-mobemp">
+    <th style="padding: 0"></th>
+    {{#with tableHeaderColSpans }}
+      {{#if_vs_bool 'v2_search_page_show_search_mode_icons'}}
+        {{#if_vs_bool 'v2_search_page_show_photos_in_search'}}
+          <th class="b-nep-msth-1">
+            <ul class="b-nep-tbres-list-views">
+              {{#ifCond ../currentSearchMode '==' 'with'}}
+                <li class="active">
+              {{else}}
+                <li>
+              {{/ifCond}}
+                <a class="b-nep-tbres-view-v1" href="" role="search_mode_btn" data-search-mode="with"></a>
+              </li>
+              {{#ifCond ../currentSearchMode '==' 'without'}}
+                <li class="active">
+              {{else}}
+                <li>
+              {{/ifCond}}
+                <a class="b-nep-tbres-view-v2" href="" role="search_mode_btn" data-search-mode="without"></a>
+              </li>
+            </ul>
+          </th>
+        {{/if_vs_bool}}
+      {{/if_vs_bool}}
+      <th class="b-nep-msth-2" {{{detailName}}}>{{ft 'v2_search_page.detail_name_column_title'}}</th>
+    {{/with}}
+    {{#ifCustomerAbleToViewStockInformation }}
+      <th class="b-nep-msth-3">{{ft 'v2_search_page.stock_column_title'}}</th>
+    {{else}}
+      <th></th>
+    {{/ifCustomerAbleToViewStockInformation}}
+    {{#if_vs_bool 'v2_search_page_show_stat_column'}}
+      <th class="b-nep-msth-4">{{ft 'v2_search_page.stat_column_title'}}</th>
+    {{else}}
+      <th></th>
+    {{/if_vs_bool}}
+    <th class="b-nep-msth-4-1">
+      {{#if_vs_bool 'v2_search_page_show_weight_column'}}
+        {{ft 'v2_search_page.weight_column_title'}}
+      {{/if_vs_bool}}
+    </th>
+    {{#if_vs_bool 'v2_search_page_show_qnt_column'}}
+      <th class="b-nep-msth-5 sortable-v2 sort-qnt-v2" data-sortable="qnt">
+        <a class="b-nep-link-sort" href="">{{ft 'v2_search_page.qnt_column_title'}}</a>
+      </th>
+    {{else}}
+      <th></th>
+    {{/if_vs_bool}}
+    {{#if_vs_bool 'v2_search_page_show_delivery_column'}}
+      <th class="b-nep-msth-6 sortable-v2 sort-min_delivery_day-v2" data-sortable="min_delivery_day">
+        <a class="b-nep-link-sort" href="">{{ft 'v2_search_page.delivery_column_title'}}</a>
+      </th>
+    {{else}}
+      <th></th>
+    {{/if_vs_bool}}
+    {{#if_vs_bool 'v2_search_page_show_btn_of_popup_to_check_price'}}
+      <th class="price-check-header"></th>
+    {{else}}
+      {{#if_vs_bool 'v2_search_page_hide_cost_from_unregistred_users' }}
+        {{#if_customer_logged }}
+          <th class="b-nep-msth-7 sortable-v2 sort-cost-v2" data-sortable="cost">
+            <a class="b-nep-link-sort" href="">{{ft 'v2_search_page.cost_column_title'}}</a>
+            {{#with results}}
+              {{#if select_currency}}
+                <select name="select_currency" id="select_currency">
+                  <option></option>
+                  {{#each currency_rates}}
+                    <option value="{{currency}}" {{selected}}>{{currency}}</option>
+                  {{/each}}
+                </select>
+              {{/if}}
+            {{/with}}
+          </th>
+        {{/if_customer_logged}}
+      {{else}}
+        <th class="b-nep-msth-7 sortable-v2 sort-cost-v2" data-sortable="cost">
+          <a class="b-nep-link-sort" href="">{{ft 'v2_search_page.cost_column_title'}}</a>
+          {{#if_customer_logged }}
+            {{#if currentCustomer.enableMarkupRating}}
+              <a href="#" class="b-nep-link-sort-v2" role="sort-rating-btn" title="{{ft 'v2_js_templates.price_item.markup_rating.sort_btn_title'}}"></a>
+            {{/if}}
+          {{/if_customer_logged }}
+          {{#with results}}
+            {{#if select_currency}}
+              <select name="select_currency" id="select_currency">
+                <option></option>
+                {{#each currency_rates}}
+                  <option value="{{currency}}" {{selected}}>{{currency}}</option>
+                {{/each}}
+              </select>
+            {{/if}}
+          {{/with}}
+        </th>
+      {{/if_vs_bool}}
+    {{/if_vs_bool}}
+
+    {{#if (js_window 'currentDiscountType.showPaymentDeferment') }}
+      <th>{{ ft 'v2_search_page.payment_deferment_column_caption' }}</th>
+    {{else}}
+      <th></th>
+    {{/if}}
+    {{#if_vs_bool 'v2_search_page_show_btn_of_popup_to_check_price'}}
+      <th width="{{vs_value 'v2_search_page_btn_check_price_column_width'}}"> {{ft 'v2_search_page.btn_text_of_popup_to_check_price'}} </th>
+    {{else}}
+      <th class="b-nep-msth-8"></th>
+    {{/if_vs_bool}}
+  </tr>
+  {{#each results.searchResultGroupNames}}
+    {{!-- {{@key}}: {{this}}  --}}
+    {{#with (lookup ../results this) as |item| }}
+      {{#with item }}
+        {{#if data}}
+          {{#unless item.hideGroupTitle}}
+            <tr class="b-nep-tr-mobemp">
+              <td class="b-nep-tbres-td-full" colspan="{{ searchGroupCaptionColspan  ../../currentSearchMode}}">
+                <div class="b-nep-tbres-tr-head">
+                  {{#ifEquals item.groupName 'other_groups' }}
+                    {{ item.groupTitle }}
+                  {{else}}
+                    {{#if item.groupTitle }}
+                      {{#ifCond (ft (concat 'v2_search_page.' item.titleLocalCode )) "!=" "" }}
+                        {{ ft (concat 'v2_search_page.' item.titleLocalCode ) }}
+                      {{else}}
+                        {{ item.groupTitle }}
+                      {{/ifCond}}
+                    {{else}}
+                      {{vs_value (concat 'v2_search_page_' ../this '_title' ) }}
+                    {{/if}}
+                    <span class="search-group-comment">
+                      {{#if item.groupComment }}
+                        {{#ifCond (ft (concat 'v2_search_page.' item.commentLocalCode )) "!=" "" }}
+                          {{ ft (concat 'v2_search_page.' item.commentLocalCode ) }}
+                        {{else}}
+                          {{ item.groupComment }}
+                        {{/ifCond}}
+                      {{else}}
+                        {{vs_value (concat 'v2_search_page_' ../this '_comment' ) }}
+                      {{/if}}
+                    </span>
+                  {{/ifEquals}}
+                </div>
+                {{#if next_step}}
+                  <div class="next-step-load"></div>
+                {{/if}}
+              </td>
+            </tr>
+          {{/unless}}
+        {{/if}}
+      {{/with}}
+      {{#renderArticleV2 item openedItems=../../openedItems currentSearchMode=../../currentSearchMode currentCustomer=../../currentCustomer}}
+        {{> catalogs/v2/_price_item }}
+      {{/renderArticleV2}}
+    {{/with}}
+  {{/each}}
+</table>
+
+{{#if results.request_uid}}
+  <div class="search-request-info"> ID запроса - {{results.request_uid}} </div>
+{{/if}}

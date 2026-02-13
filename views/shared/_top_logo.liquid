@@ -1,0 +1,7 @@
+<a href="{% unless current_path == '/' %}/{%endunless%}" class="tpl27-logo">
+  {% if current_template.top_logo_file_name == blank %}   
+    <img data-src="{{ 'logo.svg' | asset_url }}" alt="" class="img-fluid ps-sub-lazy" />
+  {% else %}
+    <img data-src="{{ current_template.top_logo_file_name | asset_url }}" alt="" class="img-fluid ps-sub-lazy" >
+  {% endif %}
+</a>

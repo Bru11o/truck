@@ -1,0 +1,26 @@
+<div class="tpl27-news mb-80">
+    {% assign newses = 10 | news_list %}
+    
+    <h2 class="second-title">{{'system-template-27.news.title' | ft}}</h2>
+    {% if newses %}
+        <div class="tpl27-news__inner">
+            {% for news in newses %}
+                <a href="/news/{{news.slug}}.html" class="tpl27-news__item">
+                    <div class="tpl27-news__img">
+                        {% if news.preview_url == blank %}
+                            <img src={{ 'news-1.png' | asset_url}} alt="">
+                        {% else %}
+                            <img src="{{news.preview_url}}" alt="">
+                        {% endif %}
+                    </div>
+                    <div class="tpl27-news__date">
+                        <img src={{ 'date.svg' | asset_url}} alt="date">
+                        {{news.created_at | date: "%Y-%m-%d" }}
+                    </div>
+                    <div class="tpl27-news__title">{{news.title}}</div>
+                    <div class="tpl27-news__content">{{news.description}}</div>
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>

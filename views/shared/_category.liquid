@@ -1,0 +1,20 @@
+{% assign menuItems = 'categoryTemplateTwentySeven' | menu_by_code %}
+
+<div class="tpl27-category mb-80">
+    <div class="tpl27-container">
+        <h2 class="second-title">{{'system-template-27.popular.category' | ft}}</h2>
+        <div class="tpl27-category__wrap">
+            {% for menuItem in menuItems %}
+                <a href="{{menuItem.url}}" class="tpl27-category__item">
+                    <div class="tpl27-category__col">
+                        <div class="tpl27-category__title">{{menuItem.name}}</div>
+                        <div class="tpl27-category__desc">{{menuItem.description}}</div>
+                    </div>
+                    <div class="tpl27-category__img">
+                        <img src="{{menuItem.icon}}" alt="{{menuItem.name}}" />
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>

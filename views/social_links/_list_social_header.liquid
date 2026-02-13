@@ -1,0 +1,8 @@
+<ul class="b-base-soc-list">
+    {% unless {{social_links.whatsup_url}} == blank %}
+      <li><a href="{{social_links.whatsup_url}}" target="_blank"><img class="ps-sub-lazy" data-src="{{'wa.svg' | asset_url}}" alt=""></a></li>
+    {% endunless %}
+    {% unless {{social_links.telegram_url}} == blank %}
+      <li><a href="{{social_links.telegram_url}}" target="_blank"><img class="ps-sub-lazy" data-src="{{'tg.svg' | asset_url}}" alt=""></a></li>
+    {% endunless %}
+  </ul>

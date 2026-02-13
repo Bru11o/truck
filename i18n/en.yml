@@ -1,0 +1,93 @@
+---
+system-template-27:
+  layouts:
+    copyright: All rights reserved
+    developer_label: Development
+    developer_link: parts-soft.ru
+  mslider:
+    btn: Go to catalog
+  news:
+    title: News
+  basket:
+    title: Basket
+  search_panel:
+    placeholder: Search catalog
+    btn: Search
+  user_nav:
+    catalog: Catalog
+    profile: Profile
+    login: Login
+    exit: Logout
+    cart: Cart
+    registration: Create Account
+    contacts: Contacts
+    reg: Registration
+    lk: Personal Account
+    balance: Balance
+    orders: My Orders
+    bills: Bills
+    waybills: Waybills
+    vin_request: VIN Requests
+    history_orders: Order History
+    my_autos: My Cars
+    messages: Messages
+  popular:
+    title: Best Sellers
+    oem: OEM Number
+    make_name: Brand
+    category: Popular Categories
+    in_cart: Add to Cart
+    novelty: New Arrivals
+  default:
+    workday: Mon-Fri
+    workweekend: Sat, Sun
+    cat: Product Catalog
+    title_search: Search for auto parts by make
+    original: Original Catalogs
+    to: Maintenance Catalog
+    psdoc: PS DOC Catalog
+  callback_form:
+    label: Having trouble selecting auto parts?
+    btn: Get Help
+  user_menu:
+    ballance: Balance
+    bills: Bills
+    invoices: Invoices
+    vin_queries: VIN Queries
+    my_autos: My Cars
+    my_order: Order History
+    messages: Messages
+  order:
+    title: My Orders
+  brands:
+    title: Select Brand
+  products:
+    qnt: Quantity
+    dilevery: Will deliver
+  search_vin:
+    find: Find
+    vin: Enter VIN
+    frame: Enter FRAME
+    title: Search parts by VIN/Frame number of your vehicle
+    subtitle: Enter FRAME number with a hyphen
+  about:
+    title: About Us
+    subtitle: Spare parts store for and models
+    desc: We are a company engaged in the retail sale of spare parts, consumables,
+      accessories, and components for foreign cars. Our range includes products from
+      leading European, Korean, Japanese brands, as well as a wide selection of non-original
+      automotive parts. We offer a fast and convenient service for searching, selecting,
+      and ordering the parts you need, a seasonal discount system, and the shortest
+      possible delivery times.
+    num_clients: 24 231+
+    clients: Satisfied clients in 10 years of work
+    num_orders: 100+
+    orders: Orders we process every day
+  form:
+    agree: I agree to the processing
+    link_text: of my data
+    btn: Send request
+    phone: Phone
+    name: Your name
+    call_me: Call me back
+    form: Fill out the form and our specialist will contact you.

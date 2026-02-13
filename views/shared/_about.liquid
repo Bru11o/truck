@@ -1,0 +1,22 @@
+{% assign main_page = 'about-template-27' | page_by_system_id %}
+{% if main_page %}
+    <div class="tpl27-about mb-80">
+        <div class="tpl27-container">
+            <h2 class="second-title">{{main_page.title}}</h2>
+            <div class="tpl27-about__wrap">
+                <div class="tpl27-about__left">
+                    <div class="tpl27-about-info-content">{{main_page.body}}</div>
+                    {{main_page.description}}
+                </div>
+                <div class="tpl27-about__right">
+                    <div class="tpl27-about__img">
+                        <img src="{{ 'about.png' | asset_url }}" alt="about"/>
+                    </div>
+                </div>
+            </div>
+            {% if_option show_advantage %}
+                {% include 'shared/_advantage.liquid' %}
+            {% endif_option %}
+        </div>
+    </div>
+{% endif %}

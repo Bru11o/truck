@@ -1,0 +1,15 @@
+{% assign page_contact = 'contact' | page_by_system_id %}
+{% unless region_selector.need_select  %}
+  <a href="{{ page_contact | custom_page_url }}" data-objectID="{{current_region.id}}" class="choice-city-link">
+    <img src="{{'location.svg' | asset_url}}" alt="" class="ps-sub-lazy" />
+    {{region_selector.current_region_name}}
+  </a>
+{% else %}
+  <a href="#" class="rmc-choice-city-link choice-city-link" 
+    data-toggle="modal" 
+    data-target="#default-select-region-modal"
+    >
+    <img src="{{'location.svg' | asset_url}}" alt="" class="ps-sub-lazy" />
+    {{region_selector.current_region_name}}
+  </a>
+{% endunless %}

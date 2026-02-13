@@ -1,0 +1,57 @@
+{% cache 'home_index', 1 %}
+
+{% include 'shared/_banner.liquid' %} 
+
+<div class="tpl27-main">
+
+    {% include 'shared/_category.liquid' %}
+    
+    {% if_option show_vin_block %}
+        {% include 'shared/_vin.liquid' %}
+    {% endif_option %}
+        
+    <div class="tpl27-container">
+    
+        <div class="tpl27-info mb-80">
+        
+            {% if_option show_catalog_block %}
+                {% include 'shared/_brands.liquid' %}
+            {% endif_option %}
+            
+        </div>
+        
+    </div>
+    
+</div>
+
+{% if_option show_hits %}
+    <div class="tpl27-container">
+        {% include 'shared/_popular.liquid' %}
+    </div>
+{% endif_option %}
+
+{% if_option show_novelty %}
+    <div class="tpl27-container">
+        {% include 'shared/_novelty.liquid' %}
+    </div>
+{% endif_option %}
+
+<div class="tpl27-main">
+    {% if_option show_about %}
+        {% include 'shared/_about.liquid' %}
+    {% endif_option %}
+</div>
+
+<div class="tpl27-container">
+    {% if_option show_news %}
+        {% include 'shared/_news_list.liquid' %}
+    {% endif_option %}
+</div>
+
+<div class="tpl27-container">
+    {% if_option show_callback %}
+        {% include 'shared/_callback_form.liquid' %}
+    {% endif_option %}
+</div>
+
+{% endcache %}

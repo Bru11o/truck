@@ -1,0 +1,15 @@
+<div class="tpl27-user-block">
+{% if current_customer %}
+  <div class="tpl27-user-block__item tpl27-user-block__item_profile">
+    <img src="{{'lk-profile.svg' | asset_url}}" alt="{{'system-template-27.user_nav.profile' | ft}}" class="ps-sub-lazy" />
+    <span>{{current_customer.name}}</span>
+    <div class="tpl27-user-drop">
+        {% include 'shared/_profile_drop.liquid' %}
+    </div>
+  </div>
+{% else %}
+  <a href="/login" class="tpl27-user-block__item">{{'system-template-27.user_nav.login' | ft}}</a>
+  <span class="line"></span>
+  <a href="/customers/new" class="tpl27-user-block__item">{{'system-template-27.user_nav.reg' | ft}}</a>
+{% endif %}
+</div>

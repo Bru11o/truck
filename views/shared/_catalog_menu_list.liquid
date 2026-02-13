@@ -1,0 +1,25 @@
+{% cache 'catalog_drop', 1 %}
+
+    {% assign menuItems = 'catalognavitemplatetwentyseven' | menu_by_code %}
+    {% for menuItem in menuItems %}
+      <a href="{{menuItem.url}}" {{menuItem.html_attribute}} style="{{menuItem.css_style}}" class="tpl27-catalog__item {% if menuItem.childrens %}tpl27-catalog__item_more{% endif %}">
+        <div class="tpl27-catalog__img">
+            <img data-src="{{menuItem.icon}}" alt="{{menuItem.name}}" class="img-fluid ps-sub-lazy">
+        </div>
+        <span>{{menuItem.name}}</span>
+        {% if menuItem.childrens %}
+            <ul>
+                {% for subMenuItem in menuItem.childrens %}
+                    <li>
+                        <object>
+                          <a href="{{subMenuItem.url}}" target="{{subMenuItem.target_type}}" {{subMenuItem.html_attribute}}
+                             style="{{subMenuItem.css_style}}">{{subMenuItem.name}}</a>
+                        </object>                            
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+      </a>
+    {% endfor %}
+    
+{% endcache %}

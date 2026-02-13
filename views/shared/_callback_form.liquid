@@ -1,0 +1,24 @@
+<div class="tpl27-info__form tpl27-info__form_vin">
+    <div class="tpl27-info__desc">
+        <div class="tpl27-info__title">{{'system-template-27.form.call_me' | ft}}</div>
+        <div class="tpl27-info__subtitle">{{'system-template-27.form.form' | ft}}</div>
+    </div>
+    <form action="/callback_orders" method="post">
+        {{auth_token_tag}}
+        <input type="hidden" id="callback_order_consent_of_processing_personal_data" name="callback_order[consent_of_processing_personal_data]" value="1" >
+        <div class="tpl27-info__row">
+            <div class="tpl27-info-vin__input">
+                <input type="text" id="callback_order_name" name="callback_order[name]" placeholder="{{'system-template-27.form.name' | ft}}" />
+            </div>
+            <div class="tpl27-info-vin__input">
+                <input type="text" class="b-input-search-footer" id="callback_order_phone" name="callback_order[phone]" placeholder="{{'system-template-27.form.phone' | ft}}" />
+            </div>
+            <button type="submit" class="tpl27-info-vin__btn">{{'system-template-27.form.btn' | ft}}</button>
+        </div>
+        <div class="tpl27-info-agree">
+            {{'system-template-27.form.agree' | ft}}
+            {% assign page_rules = '152FZ' | page_by_system_id %}
+            <a href="{{ page_rules | custom_page_url }}" target="_blank">{{'system-template-27.form.link_text' | ft}}</a>
+        </div>
+    </form>
+</div>

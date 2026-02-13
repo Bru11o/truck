@@ -1,0 +1,40 @@
+<div class="tpl27-mob-nav">
+  {% include 'shared/_auth_center.liquid' %}  
+  {% include 'shared/_top_nav.liquid' %}
+</div>
+<div class="tpl27-mob-contacts">
+    <div class="tpl27-user-drop__row">
+        <img src="{{ 'email-icon.svg' | asset_url }}" alt="pic" />
+        <div class="tpl27-user-drop__block">
+            <a href="mailto:{{current_region.contact.email}}" class="tpl27-user-drop__link">{{current_region.contact.email}}</a>
+        </div>
+    </div>
+    <div class="tpl27-user-drop__row">
+        <img src="{{ 'phone-icon-red.svg' | asset_url }}" alt="pic" />
+        <div class="tpl27-user-drop__block">
+            <a href="tel:{{current_region.contact.phone}}" class="tpl27-user-drop__link">{{current_region.contact.phone}}</a>
+        </div>
+    </div>
+    <div class="tpl27-user-drop__row">
+        <img src="{{ 'location.svg' | asset_url }}" alt="pic" />
+        <div class="tpl27-user-drop__block">
+            {% include 'shared/_region_select.liquid' %}
+            {% if_option show_shedule %}
+                <div class="tpl27-footer-contacts__times">
+                    {% if current_region.weekday_shedule != blank  %}
+                        <div class="tpl27-footer-contacts__times_block">
+                            <div class="tpl27-footer-contacts__day">{{'system-template-27.default.workday' | ft}}</div>
+                            <div class="tpl27-footer-contacts__time">{{current_region.weekday_shedule}}</div>
+                        </div>
+                    {% endif %}
+                    {% if current_region.sunday_shedule != blank  %}
+                        <div class="tpl27-footer-contacts__times_block">
+                            <div class="tpl27-footer-contacts__day">{{'system-template-27.default.workweekend' | ft}}</div>
+                            <div class="tpl27-footer-contacts__time">{{current_region.sunday_shedule}}</div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif_option %}
+        </div>
+    </div>
+</div>

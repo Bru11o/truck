@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, shrink-to-fit=no">
+  {{favicon}}
+  {{csrf_meta_tag}}
+  {{ seo_params }}
+  
+  {{ system_javascripts }}
+
+  {{ system_include }}
+  {{ "bootstrap_core.css" | stylesheet_inline_tag: 'screen, projection'}}
+  {{ "style.css" | stylesheet_inline_tag: 'screen, projection'}}
+  {{ "responsive.css" | stylesheet_inline_tag: 'screen, projection'}}
+  <!--[if lt IE 9]>
+    {{"html5.js" | javascript_link_tag}}
+  <![endif]-->
+  
+  {{site_config.head_script}}
+</head>
+
+<body class="main">
+<div class="back"></div>
+
+<div class="main-wrap">
+
+  {{site_config.top_script}}
+  
+    <header class="tpl27-header">
+        <div class="tpl27-container">
+    	    <div class="tpl27-header-wrapper">
+            	{% include 'shared/_top_logo.liquid' %}
+                {% include 'shared/_top_nav.liquid' %}
+                <div class="tpl27-header-wrapper__right">
+                    {% include 'social_links/_list_social_header.liquid' %}
+                    {% include 'shared/_region_select.liquid' %}
+                    <a class="tpl27-callback-phone" href="tel:{{current_region.contact.phone}}">
+                        <img src="{{ 'phone-icon.svg' | asset_url }}" alt="phone"/>
+                        {{current_region.contact.phone}}
+                    </a>
+                    {% include 'shared/_auth_center.liquid' %}
+                </div>
+                <div class="tpl27-header__burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <img src="{{ 'catalog-close-orange.svg' | asset_url }}" alt="close"/>
+                </div>
+            </div>
+    	</div>
+        <div class="tpl27-header__down">
+            <div class="tpl27-container">
+                <div class="tpl27-header__inner">
+                	<div class="tpl27-header__search">
+                    	<div class="tpl27-btn-catalog tpl27-btn-catalog-desktop">
+                    	    <img src="{{ 'catalog.svg' | asset_url}}" class="catalog-def"/>
+                    	    <img src="{{ 'catalog-close.svg' | asset_url}}" class="catalog-close"/>
+                    	    <img src="{{ 'catalog-close-orange.svg' | asset_url}}" class="catalog-close-orange"/>
+                    	    <img src="{{ 'catalog-mobile.svg' | asset_url}}" class="catalog-mobile"/>
+                            {{ 'system-template-27.default.cat' | ft }}
+                        </div>
+                        <div class="catalog__wrap">
+                            <div class="catalog__inner">
+                                {% include 'shared/_catalog_menu_list.liquid' %}
+                            </div>
+                        </div>
+                        {% include 'shared/_search_panel.liquid' %}
+                        {% include 'baskets/_mini.liquid' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    {% unless current_path == '/' %}
+        <div class="content">
+            <div class="tpl27-container">
+                {{ content_for_layout }}
+                {{ seo_text }}
+            </div>
+        </div>    
+    {%endunless%}
+    {% unless current_path <> '/' %}
+        <div class="content">
+            {{ content_for_layout }}  
+            <div class="tpl27-container">
+                {{ seo_text }}
+            </div>
+        </div>    
+    {%endunless%}
+    
+  {% cache 'footer_block', 1 %}
+  <!-- footer -->
+  <footer class="tpl27-footer">
+    <div class="tpl27-container">
+        <div class="tpl27-footer-down">
+            <div class="tpl27-footer-item">
+                <a href="/" class="tpl27-footer-logo">
+                    {% if_option show_footer_logo %}
+                        {% if current_template.footer_logo_file_name == blank %}
+                            <img src="{{ 'logo.svg' | asset_url }}" alt="{{ 'system-template-27.logo.logo_name' | ft }}" />
+                        {% else %}
+                            <img src="{{ current_template.footer_logo_file_name | asset_url }}" alt="{{ 'system-template-27.logo.logo_name' | ft }}" />
+                        {% endif %}   
+                    {% endif_option %}
+                </a>
+            </div>
+            {% include 'shared/_foot_nav.liquid' %}
+            <div class="tpl27-footer-contacts">
+                <div class="tpl27-footer-menu-title">{{'system-template-27.user_nav.contacts' | ft}}</div>
+                {% include 'social_links/_list_social_header.liquid' %}
+                <div class="tpl27-footer-contacts__block">
+                    <div class="tpl27-footer-contacts__row">
+                        <img src="{{ 'location.svg' | asset_url }}" alt="pic" />
+                        <span>{{region_selector.current_region_name}}</span>
+                        {% if_option show_shedule %}
+                            <div class="tpl27-footer-contacts__times">
+                                {% if current_region.weekday_shedule != blank  %}
+                                    <div class="tpl27-footer-contacts__day">{{'system-template-27.default.workday' | ft}}</div>
+                                    <div class="tpl27-footer-contacts__time">{{current_region.weekday_shedule}}</div>
+                                {% endif %}
+                                {% if current_region.sunday_shedule != blank  %}
+                                    <div class="tpl27-footer-contacts__day">{{'system-template-27.default.workweekend' | ft}}</div>
+                                    <div class="tpl27-footer-contacts__time">{{current_region.sunday_shedule}}</div>
+                                {% endif %}
+                            </div>
+                        {% endif_option %}
+                    </div>
+                    <div class="tpl27-footer-contacts__row">
+                        <img src="{{ 'phone-icon-red.svg' | asset_url }}" alt="pic" />
+                        <span>{{current_region.contact.phone}}</span>
+                    </div>
+                    <div class="tpl27-footer-contacts__row">
+                        <img src="{{ 'email-icon.svg' | asset_url }}" alt="pic" />
+                        <span>{{current_region.contact.email}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tpl27-copyright">
+        <div class="tpl27-container">
+            <div class="tpl27-copyright-wrapper">
+                <div class="tpl27-copyright-item">
+                  {% assign company_name = current_region.essential.company_name %}
+                    {% if_option show_footer_options_name_company %}
+                        {% assign company_name = current_template_options.footer_name_company %}
+                    {% endif_option %}
+                    <p>© {{ company_name }} {{'system-template-27.layouts.copyright' | ft}}</p>
+                    <p>{{'system-template-27.layouts.developer_label' | ft}} <a href="https://parts-soft.ru/">{{'system-template-27.layouts.developer_link' | ft}}</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </footer>
+  {% endcache %}
+  
+  </div>
+  
+  <div class="tpl27-mobv-nav">
+    {% include 'shared/_mobile_nav.liquid' %}
+  </div>
+  
+  {{site_config.bottom_script}}
+  {{ system_stylesheets }}
+  {{"script.js" | javascript_link_tag}}
+  {{system_search_vars}}
+  {{system_template_elements}}
+  <style>
+    {{site_config.custom_css}}
+  </style>  
+</body>
+
+</html>

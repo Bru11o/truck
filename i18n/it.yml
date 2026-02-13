@@ -1,0 +1,94 @@
+---
+system-template-27:
+  layouts:
+    copyright: Tutti i diritti riservati
+    developer_label: Sviluppo
+    developer_link: parts-soft.ru
+  mslider:
+    btn: Vai al catalogo
+  news:
+    title: Notizie
+  basket:
+    title: Carrello
+  search_panel:
+    placeholder: Cerca nel catalogo
+    btn: Trova
+  user_nav:
+    catalog: Catalogo
+    profile: Profilo
+    login: Accesso
+    exit: Uscita
+    cart: Carrello
+    registration: Crea account
+    contacts: Contatti
+    reg: Registrazione
+    lk: Area personale
+    balance: Saldo
+    orders: I miei ordini
+    bills: Fatture
+    waybills: Bolle di accompagnamento
+    vin_request: Richieste VIN
+    history_orders: Storico ordini
+    my_autos: Le mie auto
+    messages: Messaggi
+  popular:
+    title: Articoli più venduti
+    oem: Codice OEM
+    make_name: Marca
+    category: Categorie popolari
+    in_cart: Aggiungi al carrello
+    novelty: Novità
+  default:
+    workday: Lun-Ven
+    workweekend: Sab, Dom
+    cat: Catalogo prodotti
+    title_search: Ricerca ricambi per marca
+    original: Cataloghi originali
+    to: Catalogo tagliandi
+    psdoc: Catalogo PS DOC
+  callback_form:
+    label: Hai riscontrato difficoltà nella scelta dei ricambi auto?
+    btn: Richiedi assistenza
+  user_menu:
+    ballance: Saldo
+    bills: Fatture
+    invoices: Ricevute
+    vin_queries: Richieste VIN
+    my_autos: Le mie auto
+    my_order: Cronologia ordini
+    messages: Messaggi
+  order:
+    title: I miei ordini
+  brands:
+    title: Seleziona marca
+  products:
+    qnt: Quantità
+    dilevery: Consegniamo
+  search_vin:
+    find: Trova
+    vin: Inserisci VIN
+    frame: Inserisci FRAME
+    title: Cerca ricambi per numero VIN/Frame della tua auto
+    subtitle: Inserisci il numero di telaio separato da trattini
+  about:
+    title: Chi siamo
+    subtitle: Negozio di ricambi auto per marche e modelli
+    desc: Siamo un'azienda specializzata nella vendita al dettaglio di ricambi, materiali
+      di consumo, accessori e componenti per auto di produzione estera. Il nostro
+      assortimento comprende prodotti dei principali marchi europei, coreani, giapponesi,
+      oltre a un'ampia scelta di ricambi auto non originali. Offriamo un servizio
+      rapido e conveniente per la ricerca, la selezione e l'ordinazione dei ricambi
+      necessari, un sistema di sconti stagionali e tempi di consegna estremamente
+      brevi.
+    num_clients: 24 231+
+    clients: Clienti soddisfatti in 10 anni di attività
+    num_orders: 100+
+    orders: Ordini che elaboriamo ogni giorno
+  form:
+    agree: Accetto il trattamento
+    link_text: dei miei dati
+    btn: Invia richiesta
+    phone: Telefono
+    name: Il tuo nome
+    call_me: Richiamami
+    form: Compila il modulo e il nostro specialista ti contatterà.
